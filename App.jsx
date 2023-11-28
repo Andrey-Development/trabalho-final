@@ -1,11 +1,19 @@
-import {View, Text} from "react-native";
-import styles from './AppStyles';
+'react-native-gesture-handler'; 
+import React from 'react';
+import { View } from 'react-native';
+import { UserProvider } from './src/contexts/AuthContext';
+import Routes from './src/routes';
 
 export default function App() {
- 
   return (
-    <View style={styles.container}>
-      <Text>Rotas e Navegação</Text>
-    </View>
+      <UserProvider>
+        <View style={{
+          flex: 1,
+          backgroundColor: '#3c3c3c',
+        }}
+        >
+          <Routes />
+        </View>
+      </UserProvider>
   );
 }

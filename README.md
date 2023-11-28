@@ -1,2 +1,2 @@
-# trabalho-final
-Repositório para desenvolvimento de um jogo de perguntas e respostas com ReactJS
+# avaliacao03
+projeto para avaliacao da disciplina de desenvolvimento de sistemas ii com react native
