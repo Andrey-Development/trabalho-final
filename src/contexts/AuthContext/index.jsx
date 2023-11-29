@@ -11,7 +11,8 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState({
         nome: ''
         , email: ''
-        , password: ''
+        , numberQuestion: ''
+        , dificulty: ''
     });
 
     return (

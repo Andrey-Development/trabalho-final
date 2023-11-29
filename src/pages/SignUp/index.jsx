@@ -6,7 +6,7 @@ export default function SignUp({ navigation }) {
     const { user, setUser } = useContext(UserContext);
 
     return (
-        <View style={styles.container}> 
+        <View style={styles.container}>
             <Text style={styles.texto}>Nome</Text>
             <TextInput
                 style={styles.input}
@@ -23,12 +23,20 @@ export default function SignUp({ navigation }) {
                 value={user.email}
             />
 
+            <Text style={styles.texto}>Numero de questões</Text>
+            <TextInput
+                style={styles.input}
+                underlineColorAndroid="transparent"
+                onChangeText={(texto) => setUser({ ...user, numberQuestion})}
+                value={user.numberQuestion}
+            />
+
             <Text style={styles.texto}>Senha</Text>
             <TextInput
                 style={styles.input}
                 underlineColorAndroid="transparent"
-                onChangeText={(texto) => setUser({ ...user, password: texto })}
-                value={user.password}
+                onChangeText={(texto) => setUser({ ...user, dificulty: texto })}
+                value={user.dificulty}
             />
 
             <View style={styles.divButtoms}>
