@@ -5,11 +5,7 @@ import AppRoutes from './app.routes';
 function Routes() {
 
     return (
-        <NavigationContainer
-            style={{
-                backgroundColor: '#3c3c3c',
-            }}
-        >
+        <NavigationContainer>
             <AppRoutes />
         </NavigationContainer>
     )

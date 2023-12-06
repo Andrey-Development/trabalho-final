@@ -10,48 +10,35 @@ const Stack = createNativeStackNavigator();
 function AppRoutes() {
     return (
         <Stack.Navigator initialRouteName="SignUp">
-            <Stack.Screen 
-                name="SignUp" 
-                component={SignUp} 
-                options={{ 
-                    title: 'Cadastrar',
-                    headerStyle: {
-                        backgroundColor: '#2a2a2a',
-                    },
-                    headerTintColor: '#f1f1fa',
-                    statusBarColor: '#2a2a2a',
+            <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{
+                    statusBarColor: '#179A93',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 28,
                     },
+                    headerShown: false
                 }}
             />
-            <Stack.Screen 
-                name="Home" 
-                component={Home} 
-                options={{ 
+            <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{
                     title: 'Lista de Tarefas',
-                    headerStyle: {
-                        backgroundColor: '#2a2a2a',
-                    },
-                    headerTintColor: '#f1f1fa',
-                    statusBarColor: '#2a2a2a',
+                    statusBarColor: '#179A93',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 28,
                     },
                 }}
             />
-            <Stack.Screen 
-                name="NewTask" 
-                component={NewTask} 
-                options={{ 
-                    title: 'Tarefa',
-                    headerStyle: {
-                        backgroundColor: '#2a2a2a',
-                    },
-                    headerTintColor: '#f1f1fa',
-                    statusBarColor: '#2a2a2a',
+            <Stack.Screen
+                name="NewTask"
+                component={NewTask}
+                options={{
+                    statusBarColor: '#179A93',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 28,

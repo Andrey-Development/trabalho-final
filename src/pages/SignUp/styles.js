@@ -3,24 +3,24 @@ import { Text, View, SafeAreaView, ScrollView } from "react-native";
 
 export const Container = styled(SafeAreaView)`
   flex: 1;
-  background-color: #001021;
-  padding-bottom: 12%;
+  padding: 3%;
 `;
 
 export const Texto = styled.Text`
   font-size: 20px;
   margin-top: 10px;
   padding: 15px;
-  color: #FFF;
+  color: #f5f7f8;
+  fontWeight: bold;
 `;
 export const TextoHeader = styled.Text`
   font-size: 30px;
   margin-top: 25px;
   padding: 20px;
-  color: #FFF;
+  color: #f5f7f8;
 `;
 
-export const Input = styled.TextInput`
+export const CampoInput = styled.TextInput`
   margin-top: 10px;
   padding: 10px;
   border-width: 1px;
@@ -30,34 +30,24 @@ export const Input = styled.TextInput`
   font-size: 17px;
   border-radius: 15px;
   align-self: center;
-  color: #FFF;
+  color: #f5f7f8;
+
 `;
 
 export const Botao = styled.TouchableOpacity`
   margin-top: 80px;
   align-items: center;
   justify-content: center;
-  border-color: #121212;
-  border-width: 1px;
-  background-color: #68B2;
   border-radius: 15px;
   height: 75px;
-  width: 88%;
+  width: 100%;
   align-self: center;
 `;
 
 export const ButtonText = styled.Text`
   font-size: 22px;
   font-weight: bold;
-  color: #fff;
-`;
-
-export const Header1 = styled.View`
-  width: 100%;
-  height: 100px;
-  align-items: center;
-  justify-content: center;
-  background-color: #001021;
+  color: #f5f7f8;
 `;
 
 export const Link = styled.TouchableOpacity`
@@ -73,4 +63,22 @@ export const LinkText = styled.Text`
 export const StyledSwitch = styled.Switch`
   width: 40px;
   height: 40px;
+`;
+
+export const Logo = styled.Image`
+  margin-bottom: 20px;
+  width: 85%;
+  height: 22%;
+  resizeMode: contain;
+  margin-right: 10px;
+  margin-start: 25px;
+`;
+
+export const PickerContainer = styled.View`
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  align-self: center;
+  width: 377px;
 `;

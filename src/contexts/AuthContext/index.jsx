@@ -9,7 +9,7 @@ export const UserContext = createContext();
 // Componente Provider
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState({
-        nome: ''
+        name: ''
         , email: ''
         , numberQuestion: ''
         , dificulty: ''
