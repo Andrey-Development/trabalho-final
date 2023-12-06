@@ -1,87 +1,101 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Container, Texto, CampoInput, Botao, ButtonText, Logo, PickerContainer } from './styles';
+import { LinearGradient } from "expo-linear-gradient";
+import { Picker } from "@react-native-picker/picker";
+import styled from 'styled-components/native';
+import imgQuestion from '../../../assets/question.png'
 import { UserContext } from '../../contexts/AuthContext';
 
 export default function SignUp({ navigation }) {
-    const { user, setUser } = useContext(UserContext);
+    const [selectedNumberQuestion, setSelectedNumberQuestion] = useState('10');
+    const [selectedDifficulty, setSelectedDifficulty] = useState('easy');
+
+    const [user, setUser] = useState({
+        name: ''
+        , email: ''
+        , numberQuestion: ''
+        , dificulty: ''
+    });
+
+
+    const buildApiUrl = () => {
+        const apiUrl = 'https://opentdb.com/api.php?';
+        const amountParam = `amount=${selectedNumberQuestion}`;
+        const categoryParam = 'category=18';
+        const difficultyParam = `difficulty=${selectedDifficulty}`;
+        const typeParam = 'type=multiple';
+        console.log('TESTEEEEE:', `${apiUrl}${amountParam}&${categoryParam}&${difficultyParam}&${typeParam}`)
+
+        return `${apiUrl}${amountParam}&${categoryParam}&${difficultyParam}&${typeParam}`;
+    };
+
+    const onSubmit = () => {
+        const apiUrl = buildApiUrl();
+        console.log('API URL:', apiUrl);
+        navigation.navigate(apiUrl, 'Home');
+    };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.texto}>Nome</Text>
-            <TextInput
-                style={styles.input}
-                underlineColorAndroid="transparent"
-                onChangeText={(texto) => setUser({ ...user, nome: texto })}
-                value={user.nome}
-            />
+        <LinearGradient
+            colors={["#179A93", "#265e8d"]}
+            start={{ x: 1, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={{ flex: 1 }}>
+            <Container>
+                <Logo source={imgQuestion}></Logo>
 
-            <Text style={styles.texto}>Email</Text>
-            <TextInput
-                style={styles.input}
-                underlineColorAndroid="transparent"
-                onChangeText={(texto) => setUser({ ...user, email: texto })}
-                value={user.email}
-            />
-
-            <Text style={styles.texto}>Numero de questões</Text>
-            <TextInput
-                style={styles.input}
-                underlineColorAndroid="transparent"
-                onChangeText={(texto) => setUser({ ...user, numberQuestion})}
-                value={user.numberQuestion}
-            />
-
-            <Text style={styles.texto}>Senha</Text>
-            <TextInput
-                style={styles.input}
-                underlineColorAndroid="transparent"
-                onChangeText={(texto) => setUser({ ...user, dificulty: texto })}
-                value={user.dificulty}
-            />
-
-            <View style={styles.divButtoms}>
-                <Button
-                    title="Cadastrar"
-                    onPress={() => {
-                        navigation.navigate('Home');
-                    }}
+                <Texto>Nome</Texto>
+                <CampoInput
+                    onChangeText={(texto) => setUser({ ...user, name: texto })}
+                    value={user.name}
                 />
 
-                <Button
-                    title="Já possuo cadastro"
-                    onPress={() => navigation.navigate('Login')}
+                <Texto>Email</Texto>
+                <CampoInput onChangeText={(texto) => setUser({ ...user, email: texto })}
+                    value={user.email}
                 />
-            </View>
-        </View>
+                <Texto>Numero de questões</Texto>
+
+                <Picker
+                    selectedValue={selectedNumberQuestion}
+                    onValueChange={itemValue => setSelectedNumberQuestion(itemValue)}
+                    style={{ color: '#FFF' }}
+                >
+                    <Picker.Item label="10" value="10" />
+                    <Picker.Item label="20" value="20" />
+                    <Picker.Item label="30" value="30" />
+                </Picker>
+
+
+                <Texto>Dificuldade</Texto>
+
+                <Picker
+                    selectedValue={selectedDifficulty}
+                    onValueChange={(itemValue) => setSelectedDifficulty(itemValue)}
+                    style={{ color: '#FFF' }}
+                >
+                    <Picker.Item label="Fácil" value="easy" />
+                    <Picker.Item label="Médio" value="medium" />
+                    <Picker.Item label="Difícil" value="hard" />
+                </Picker>
+
+
+                <Container>
+                    <Botao
+                        onPress={() => {
+                            const apiUrl = buildApiUrl();
+                            console.log('API URL:', apiUrl);
+                            navigation.navigate('Home');
+                        }}
+                    ><LinearGradient
+                        colors={["#265e8d", "#179A93"]}
+                        start={{ x: 1, y: 0 }}
+                        end={{ x: 0, y: 1 }}
+                        style={{ flex: 1, width: '100%', borderRadius: 15, alignItems: "center", justifyContent: 'center' }}>
+                            <ButtonText>Começar</ButtonText></LinearGradient></Botao>
+                </Container>
+            </Container>
+        </LinearGradient >
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#3c3c3c',
-        flex: 1,
-        padding: 10,
-    },
-    texto: {
-        color: '#f1f1fa',
-        fontSize: 20
-    },
-    input: {
-        marginBottom: 10,
-        padding: 10,
-        borderBottomWidth: 1,
-        borderColor: '#c6c6c6',
-        height: 45,
-        fontSize: 17,
-        marginBottom: 12,
-    },
-    divButtoms: {
-        marginTop: 16,
-        gap: 12,
-    },
-    button: {
-        color: '#f1f1fa',
-        backgroundColor: '#00cbcc',
-        marginBottom: 12,
-    }
-});
