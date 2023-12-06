@@ -46,6 +46,11 @@ export default function Home({ navigation }) {
     return (
         <View style={styles.container}>
             <Text>Home</Text>
+
+            <Button 
+                title="Ranking"
+                onPress={() => { navigation.navigate('Ranking') }} 
+            />
         </View>
     );
 }

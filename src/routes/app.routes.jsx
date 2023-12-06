@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
-import NewTask from '../pages/NewTask';
+import Ranking from '../pages/Ranking';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,10 +43,10 @@ function AppRoutes() {
                 }}
             />
             <Stack.Screen 
-                name="NewTask" 
-                component={NewTask} 
+                name="Ranking" 
+                component={Ranking} 
                 options={{ 
-                    title: 'Tarefa',
+                    title: 'Ranking',
                     headerStyle: {
                         backgroundColor: '#2a2a2a',
                     },
