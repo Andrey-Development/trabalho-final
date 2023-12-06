@@ -26,28 +26,24 @@ function AppRoutes() {
                 name="Home"
                 component={Home}
                 options={{
-                    title: 'Lista de Tarefas',
                     statusBarColor: '#179A93',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 28,
                     },
+                    headerShown: false
                 }}
             />
             <Stack.Screen 
                 name="Ranking" 
                 component={Ranking} 
-                options={{ 
-                    title: 'Ranking',
-                    headerStyle: {
-                        backgroundColor: '#2a2a2a',
-                    },
-                    headerTintColor: '#f1f1fa',
-                    statusBarColor: '#2a2a2a',
+                options={{
+                    statusBarColor: '#179A93',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 28,
                     },
+                    headerShown: false
                 }}
             />
         </Stack.Navigator>

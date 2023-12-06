@@ -8,27 +8,10 @@ import imgQuestion from '../../../assets/question.png'
 import { UserContext } from '../../contexts/AuthContext';
 
 export default function SignUp({ navigation }) {
+    const { user, setUser } = useContext(UserContext);
+
     const [selectedNumberQuestion, setSelectedNumberQuestion] = useState('10');
     const [selectedDifficulty, setSelectedDifficulty] = useState('easy');
-
-    const [user, setUser] = useState({
-        name: ''
-        , email: ''
-        , numberQuestion: ''
-        , dificulty: ''
-    });
-
-
-    const buildApiUrl = () => {
-        const apiUrl = 'https://opentdb.com/api.php?';
-        const amountParam = `amount=${selectedNumberQuestion}`;
-        const categoryParam = 'category=18';
-        const difficultyParam = `difficulty=${selectedDifficulty}`;
-        const typeParam = 'type=multiple';
-        console.log('TESTEEEEE:', `${apiUrl}${amountParam}&${categoryParam}&${difficultyParam}&${typeParam}`)
-
-        return `${apiUrl}${amountParam}&${categoryParam}&${difficultyParam}&${typeParam}`;
-    };
 
     const onSubmit = () => {
         const apiUrl = buildApiUrl();
@@ -58,8 +41,8 @@ export default function SignUp({ navigation }) {
                 <Texto>Numero de questões</Texto>
 
                 <Picker
-                    selectedValue={selectedNumberQuestion}
-                    onValueChange={itemValue => setSelectedNumberQuestion(itemValue)}
+                    selectedValue={user.numberQuestion}
+                    onValueChange={(numberSelected) => setUser({ ...user, numberQuestion: numberSelected })}
                     style={{ color: '#FFF' }}
                 >
                     <Picker.Item label="10" value="10" />
@@ -67,12 +50,11 @@ export default function SignUp({ navigation }) {
                     <Picker.Item label="30" value="30" />
                 </Picker>
 
-
                 <Texto>Dificuldade</Texto>
 
                 <Picker
-                    selectedValue={selectedDifficulty}
-                    onValueChange={(itemValue) => setSelectedDifficulty(itemValue)}
+                    selectedValue={user.dificulty}
+                    onValueChange={(valueSelected) => setUser({ ...user, dificulty: valueSelected })}
                     style={{ color: '#FFF' }}
                 >
                     <Picker.Item label="Fácil" value="easy" />
@@ -80,20 +62,21 @@ export default function SignUp({ navigation }) {
                     <Picker.Item label="Difícil" value="hard" />
                 </Picker>
 
-
                 <Container>
                     <Botao
                         onPress={() => {
-                            const apiUrl = buildApiUrl();
-                            console.log('API URL:', apiUrl);
                             navigation.navigate('Home');
                         }}
-                    ><LinearGradient
-                        colors={["#265e8d", "#179A93"]}
-                        start={{ x: 1, y: 0 }}
-                        end={{ x: 0, y: 1 }}
-                        style={{ flex: 1, width: '100%', borderRadius: 15, alignItems: "center", justifyContent: 'center' }}>
-                            <ButtonText>Começar</ButtonText></LinearGradient></Botao>
+                    >
+                        <LinearGradient
+                            colors={["#265e8d", "#179A93"]}
+                            start={{ x: 1, y: 0 }}
+                            end={{ x: 0, y: 1 }}
+                            style={{ flex: 1, width: '100%', borderRadius: 15, alignItems: "center", justifyContent: 'center' }}
+                        >
+                            <ButtonText>Começar</ButtonText>
+                        </LinearGradient>
+                    </Botao>
                 </Container>
             </Container>
         </LinearGradient >

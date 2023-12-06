@@ -8,17 +8,32 @@ export const UserContext = createContext();
 
 // Componente Provider
 export const UserProvider = ({ children }) => {
+    // dados fixos api
+    const apiUrl = 'https://opentdb.com/api.php';
+    const categoryParam = 'category=18';
+    const typeParam = 'type=multiple';
+    // variaveis de estado
+    const [loading, setLoading] = useState();
     const [user, setUser] = useState({
         name: ''
-        , email: ''
-        , numberQuestion: ''
-        , dificulty: ''
+        ,email: ''
+        ,numberQuestion: "10"
+        ,dificulty: 'easy'
     });
+    // funções
+    const buildApiUrl = () => {
+        // fazer fecth deste link
+        console.log('TESTEEEEE:', `${apiUrl}?amount=${user.numberQuestion}&${categoryParam}&difficulty=${user.dificulty}&${typeParam}`);
+        // transformar response em json
+    };
 
     return (
         <UserContext.Provider value={{ 
                 user
                 ,setUser
+                ,loading
+                ,setLoading
+                ,buildApiUrl
             }}
         >
             {children}

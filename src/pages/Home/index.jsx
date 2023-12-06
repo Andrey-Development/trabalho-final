@@ -6,9 +6,11 @@ import styles from './styles';
 import { UserContext } from '../../contexts/AuthContext';
 
 export default function Home({ apiUrlRoute, navigation }) {
-    const [questions, setQuestions] = useState([]);
-    const [selectedAnswers, setSelectedAnswers] = useState({});
-    const [data, setData] = useState(null);
+    const { buildApiUrl } = useContext(UserContext);
+
+    useEffect(() => {
+        buildApiUrl();
+    }, []);
 
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -33,6 +35,9 @@ export default function Home({ apiUrlRoute, navigation }) {
 
     return (
         <View style={styles.container}>
+            <Text>Home</Text>
+            <Text>Home</Text>
+            <Text>Home</Text>
             <Text>Home</Text>
 
             <Button 
